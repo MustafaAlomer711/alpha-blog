@@ -1,8 +1,23 @@
-<h1>Articles</h1>
+<h1>Articles listing page</h1>
 
-<ul>
-  <% @articles.each do |article| %>
-    <li><%= article.title %></li>
-    <li><%= article.description %></li>
-  <% end %>
-</ul>
+<table>
+  <thead>
+    <tr>
+      <th>Title</th>
+      <th>Description</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @articles.each do |article| %>
+      <tr>
+        <td><%= article.title %></td>
+        <td><%= article.description %></td>
+        <td><%= link_to 'Show', article_path(article) %></td>
+        <td><%= link_to 'Edit', edit_article_path(article), method: :edit%></td>
+        <td><%= button_to 'Delete', article_path(article), method: :delete %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

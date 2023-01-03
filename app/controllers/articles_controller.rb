@@ -1,5 +1,5 @@
 class ArticlesController < ApplicationController
-  before_action :find_article, only: [:show]
+  before_action :find_article, only: [:show, :edit, :update, :destroy]
 
   def index
     @articles = Article.all
@@ -10,7 +10,19 @@ class ArticlesController < ApplicationController
   end
 
   def show
-    @article = Article.find(params[:id])
+  end
+
+  def edit
+
+  end
+
+  def update
+    if @article.update(article_params)
+      flash[:notice] = 'Article updated'
+      redirect_to @article
+    else
+      flash[:notice] = 'Article was not updated'
+    end
   end
 
   def create
@@ -21,6 +33,11 @@ class ArticlesController < ApplicationController
     else
       render :index
     end
+  end
+
+  def destroy
+    @article.destroy
+    redirect_to article_path
   end
 
   private
