@@ -16,10 +16,12 @@
   </head>
 
   <body>
+  <div id="page-content">
      <%= render 'layouts/navigation' %>
     <% flash.each do |name, msg| %>
      <%= msg %>
     <% end %>
     <%= yield %>
+  </div>
   </body>
 </html>
