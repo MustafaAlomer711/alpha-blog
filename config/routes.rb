@@ -8,4 +8,6 @@ Rails.application.routes.draw do
   # get 'articles/:id', to: 'articles#show'
   root to: 'pages#home'
   resources :articles
+  get 'signup', to: 'users#new'
+  resources :users, except: [:new]
 end
