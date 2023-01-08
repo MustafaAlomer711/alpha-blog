@@ -32,6 +32,10 @@ gem "simple_form", github: "heartcombo/simple_form"
 gem 'webpacker'
 
 gem "font-awesome-sass", "~> 6.1"
+
+# devise
+gem 'devise'
+
 # Use Redis adapter to run Action Cable in production
 # gem "redis", "~> 4.0"
 
