@@ -1,8 +1,11 @@
 class UsersController < ApplicationController
-  before_action :find_user, only: [:show]
+  before_action :find_user, only: [:show, :edit]
 
   def index
     @user = User.all
+  end
+
+  def edit
   end
 
   def show
