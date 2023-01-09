@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_action :find_user, only: [:show, :edit]
+  before_action :find_user, only: [:show, :edit, :update]
 
   def index
     @user = User.all
@@ -22,6 +22,15 @@ class UsersController < ApplicationController
       redirect_to articles_path
     else
       render :new, status: :unprocessable_entity
+    end
+  end
+
+  def update
+    if @user.update(user_params)
+      flash[:notice] = "User updated successfully"
+      redirect_to articles_path
+    else
+      render :edit, status: :unprocessable_entity
     end
   end
 
