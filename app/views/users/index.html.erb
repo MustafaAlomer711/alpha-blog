@@ -1,0 +1,30 @@
+<h1 class="text-center mt-2">Bloggers</h1>
+
+<div id="page-content">
+    <div class="container">
+      <% @users.each do |user| %>
+        <div class="row justify-content-md-center">
+          <div class="col-8 mt-4">
+            <div class="card text-center shadow mb-5 bg-white rounded">
+              <div class="card-header">
+                by <%= user.username.capitalize %>
+              </div>
+              <div class="card-body">
+                <h5 class="card-title"><%= user.username %></h5>
+                <p class="card-text"><%= pluralize(user.articles.count, 'article') %></p>
+                <div class="container-button mb-2">
+                  <%= link_to 'View profile', user_path(user), method: :show, class: 'btn btn-outline-success' %>
+                  <%= link_to 'Edit profile', edit_user_path(user), method: :edit, class: 'btn btn-outline-info'%>
+                </div>
+                <div class="card-footer text-muted">
+                <small>Joined <%= time_ago_in_words(user.created_at) %> ago,
+                edited <%= time_ago_in_words(user.updated_at) %> ago</small>
+              </div>
+            </div>
+        </div>
+        </div>
+        <% end %>
+            <div class="text-center"><%= link_to "Post article", new_article_path, class: "btn btn-primary" %></div>
+        </div>
+    </div>
+</div>
