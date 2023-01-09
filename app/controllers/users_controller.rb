@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_action :find_user, only: [:show, :edit, :update]
+  before_action :find_user, only: [:show, :edit, :update, :destroy]
 
   def index
     @user = User.all
@@ -9,6 +9,7 @@ class UsersController < ApplicationController
   end
 
   def show
+    @articles = @user.articles
   end
 
   def new
@@ -32,6 +33,11 @@ class UsersController < ApplicationController
     else
       render :edit, status: :unprocessable_entity
     end
+  end
+
+  def destroy
+    @user.destroy
+    redirect_to root_path
   end
 
   private
