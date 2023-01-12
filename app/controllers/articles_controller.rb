@@ -2,7 +2,11 @@ class ArticlesController < ApplicationController
   before_action :find_article, only: [:show, :edit, :update, :destroy]
 
   def index
-    @articles = Article.paginate(page: params[:page], per_page: 5)
+    if logged_in? && current_user
+      @articles = Article.paginate(page: params[:page], per_page: 5)
+    else
+      redirect_to signup_path
+    end
   end
 
   def new
