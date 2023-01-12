@@ -1,7 +1,9 @@
 <h1 class="text-center mt-4"><%= @user.username.capitalize %>'s Profile</h1>
 
 <div class="text-center">
+<% if logged_in? && @user == current_user %>
   <%= link_to "Edit profile", edit_user_path(@user), class: "btn btn-outline-primary"%>
+ <% end %>
 </div>
 
 <div class="apple_pagination">
