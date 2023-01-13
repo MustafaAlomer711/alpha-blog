@@ -1,11 +1,14 @@
 class UsersController < ApplicationController
   before_action :find_user, only: [:show, :edit, :update, :destroy]
+  before_action :require_user, only: [:edit, :update]
+  before_action :require_same_user, only: [:update, :delete, :edit]
 
   def index
     @users = User.all
   end
 
   def edit
+
   end
 
   def show
@@ -49,5 +52,12 @@ class UsersController < ApplicationController
 
   def user_params
     params.require(:user).permit(:username, :email, :password)
+  end
+
+  def require_same_user
+    if current_user != @user
+      flash[:alert] = "You cannot edit or update someone else's profile!"
+      redirect_to @user
+    end
   end
 end
