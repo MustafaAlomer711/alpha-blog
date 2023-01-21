@@ -1,5 +1,6 @@
 <h1 class="text-center mt-2">Bloggers</h1>
 
+
 <div id="page-content">
     <div class="container">
       <% @users.each do |user| %>
@@ -19,7 +20,6 @@
                   <% end %>
                 </div>
                 <div class="card-footer text-muted">
-                <small>Joined <%= time_ago_in_words(user.created_at) %> ago,
                 edited <%= time_ago_in_words(user.updated_at) %> ago</small>
               </div>
             </div>

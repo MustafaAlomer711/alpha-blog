@@ -22,9 +22,9 @@
                 <div class="card-footer text-muted">
                   <small>Created <%= time_ago_in_words(article.created_at) %> ago,
                   edited <%= time_ago_in_words(article.updated_at) %> ago</small>
-              </div>
-            </div>
-        </div>
+               </div>
+             </div>
+          </div>
         </div>
         <% end %>
             <div class="text-center"><%= link_to "Post article", new_article_path, class: "btn btn-primary" %></div>
