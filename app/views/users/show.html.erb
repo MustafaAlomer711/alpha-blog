@@ -3,8 +3,8 @@
 <div class="text-center">
 <% if logged_in? && @user == current_user %>
   <%= link_to "Edit profile", edit_user_path(@user), class: "btn btn-outline-primary"%>
- <% end %>
-</div>
+  <%= link_to "Delete profile", delete_profile_path(@user), data: { turbo_method: :delete,  turbo_confirm: "Are you sure?" }, class: "btn btn-outline-danger" %>
+<% end %>
 
 <div class="apple_pagination">
     <%= will_paginate @articles, :container => false %>
