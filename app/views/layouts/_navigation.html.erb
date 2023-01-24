@@ -35,7 +35,8 @@
             <%= link_to "Logout", logout_path, class: "nav-link" %>
             </li>
              <li class="nav-item">
-              <%= link_to current_user.username.capitalize, user_path(current_user), class: "nav-link" %>
+              <a class="nav-link"><%= "(Admin)" if current_user.admin? %> Profile [<%= current_user.username.capitalize %>]
+              </a>
             </li>
             <% else %>
              <li class="nav-item">
