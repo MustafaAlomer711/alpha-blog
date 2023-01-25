@@ -7,4 +7,5 @@ Rails.application.routes.draw do
   get '/delete_profile/:id', to: 'users#destroy', as: 'delete_profile'
   get 'signup', to: 'users#new'
   resources :users, except: [:new]
+  resources :categories, except: [:destroy]
 end
